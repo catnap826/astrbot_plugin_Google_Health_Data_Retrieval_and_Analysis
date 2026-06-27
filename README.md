@@ -1,0 +1,2 @@
+# astrbot_plugin_Google_Health_Data_Retrieval_and_Analysis
+astrbot插件，调用Google health api，拉取谷歌健康中的数据，可选接入llm分析
