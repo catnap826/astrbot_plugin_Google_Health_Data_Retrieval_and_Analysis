@@ -10,7 +10,12 @@ AstrBot 插件 — 通过 Google Health API 获取健康数据，支持步数、
 
 ### 2. LLM 分析效果
 
-![LLM 分析效果](sample2.png)
+<details>
+<summary>点击查看完整截图</summary>
+
+<img src="sample2.png" alt="LLM 分析效果" width="320" style="border: 1px solid #d0d7de; border-radius: 8px; margin-top: 8px;" />
+
+</details>
 
 ## ✨ 功能
 
