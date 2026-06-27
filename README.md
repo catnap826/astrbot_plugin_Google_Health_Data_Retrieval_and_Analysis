@@ -29,15 +29,33 @@ AstrBot 插件 — 通过 Google Health API 获取健康数据，支持步数、
 ## 📋 前置条件
 
 1. **Google Cloud Console 配置**
-   - 创建项目并启用 **Google Health API**
-   - 创建 OAuth 2.0 凭据（推荐 **"Web 应用"** 类型）
+   - 创建项目并启用 [Google Health API](https://console.cloud.google.com/marketplace/product/google/health.googleapis.com)
+   - 进入 [API 和服务 → 凭证](https://console.cloud.google.com/apis/credentials) → 创建凭证 → OAuth 客户端 ID，创建 OAuth 2.0 凭据（推荐 **"Web 应用"** 类型）
    - 添加重定向 URI：`http://localhost:8080/`
-   - 下载 `credentials.json`
+   - 下载 JSON 后重命名为 `credentials.json`
 
 2. **OAuth 授权范围**
-   - `googlehealth.activity_and_fitness.readonly`
-   - `googlehealth.health_metrics_and_measurements.readonly`
-   - `googlehealth.sleep.readonly`
+
+   进入 [OAuth 权限请求页面](https://console.cloud.google.com/apis/credentials/consent) → 跳转至 Google Auth Platform → 边栏「数据访问」→「添加或移除范围」，找到并勾选以下范围：
+
+   | 范围 | 说明 |
+   |------|------|
+   | `googlehealth.activity_and_fitness.readonly` | 活动和健身数据 |
+   | `googlehealth.health_metrics_and_measurements.readonly` | 健康指标和测量结果 |
+   | `googlehealth.sleep.readonly` | 睡眠数据 |
+   | `googlehealth.location.readonly` | 锻炼 GPS 位置数据 |
+   | `googlehealth.nutrition.readonly` | 营养数据 |
+   | `googlehealth.profile.readonly` | 个人资料数据 |
+   | `googlehealth.settings.readonly` | Health 设置 |
+   | `googlehealth.irn.readonly` | 心律不齐通知数据 |
+   | `googlehealth.ecg.readonly` | 心电图数据 |
+
+   > 💡 插件当前仅使用前 3 个范围（活动、指标、睡眠），其余为预留扩展。
+3. **添加测试用户**（⚠️ 重要，不添加会导致授权报错）
+
+   进入 [OAuth 权限请求页面](https://console.cloud.google.com/apis/credentials/consent) → 跳转至 Google Auth Platform → 边栏「目标对象」→ 下滑找到「测试用户」→ 点击 **Add users** → 填入要查询 Health 数据的 Google 账号
+
+   > ⚠️ **测试应用最多支持 100 名用户**。如需面向所有 Google 账号开放，需将应用发布，但要求配置域名、提供隐私条款和服务条款并提交 Google 审核。
 
 ## 🚀 安装与配置
 
